@@ -6,7 +6,7 @@
 	$host = 'http://proxying_url';
 
 	$post = $_POST;
-	$path = $_SERVER['PATH_INFO'];
+	$path = (empty($_SERVER['PATH_INFO'])?$_SERVER['REQUEST_URI']:$_SERVER['PATH_INFO']);
 	$get = $_GET;
 
 	$ch = curl_init('http://'.$host.$path.(count($get)>0?'?'.http_build_query($get):''));
